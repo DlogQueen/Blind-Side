@@ -7,20 +7,29 @@ export default function Home() {
       name: "The Decoherence Log",
       description:
         "An AI-powered research and journaling space built for deep thinkers. Explore ideas at the edge of science, consciousness, and technology.",
+      tech: [
+        "Vertex AI / Gemini — AI summarization & content rewriting",
+        "Vision AI — image analysis & moderation",
+        "Speech-to-Text — voice post transcription",
+        "Cloud Translate — multi-language support",
+        "reCAPTCHA Enterprise — spam & bot protection",
+      ],
       link: "https://huggingface.co/spaces/Thatbtchryleigh/TheDecoherenceLog",
-      image: "/new_img2.png",
+      image: "/new_img1.jpg",
     },
     {
       name: "TRANZcend X",
       description:
         "A discovery platform built for the trans community — connecting people to resources, stories, and support in one place.",
+      tech: [],
       link: "https://trans-cend-official.vercel.app/discover",
       image: "/new_img3.png",
     },
     {
-      name: "Guardian Gate",
+      name: "Scout AI",
       description:
         "An intelligent scouting and intelligence platform. Real-time data, sharp insights, built for those who need to stay ahead.",
+      tech: [],
       link: "https://scoutintelbyblxndside.up.railway.app/",
       image: "/new_img4.png",
     },
@@ -31,7 +40,7 @@ export default function Home() {
       {/* NAV */}
       <nav className="flex items-center justify-between px-8 py-5 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <Image src="/new_img1.jpg" alt="Blindsided Development Logo" width={40} height={40} className="rounded-full object-cover" />
+          <Image src="/new_img2.png" alt="Blindsided Development Logo" width={40} height={40} className="rounded-full object-cover" />
           <span className="text-lg font-bold tracking-tight">Blindsided Development</span>
         </div>
         <div className="hidden md:flex gap-8 text-sm text-white/60">
@@ -126,6 +135,19 @@ export default function Home() {
                 <div className="p-6">
                   <h3 className="text-lg font-semibold mb-2 group-hover:text-violet-400 transition-colors">{p.name}</h3>
                   <p className="text-white/50 text-sm leading-relaxed">{p.description}</p>
+                  {p.tech.length > 0 && (
+                    <div className="mt-4">
+                      <p className="text-violet-400 text-xs font-semibold uppercase tracking-widest mb-2">Powered By</p>
+                      <ul className="space-y-1">
+                        {p.tech.map((t) => (
+                          <li key={t} className="text-white/40 text-xs flex items-start gap-1.5">
+                            <span className="text-violet-500 mt-0.5">›</span>
+                            {t}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <span className="inline-block mt-4 text-violet-400 text-sm font-medium">View Project →</span>
                 </div>
               </Link>
