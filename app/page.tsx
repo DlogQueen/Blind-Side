@@ -1,103 +1,173 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const projects = [
+    {
+      name: "The Decoherence Log",
+      description:
+        "An AI-powered research and journaling space built for deep thinkers. Explore ideas at the edge of science, consciousness, and technology.",
+      link: "https://huggingface.co/spaces/Thatbtchryleigh/TheDecoherenceLog",
+      image: "/new_img2.png",
+    },
+    {
+      name: "TRANZcend X",
+      description:
+        "A discovery platform built for the trans community — connecting people to resources, stories, and support in one place.",
+      link: "https://trans-cend-official.vercel.app/discover",
+      image: "/new_img3.png",
+    },
+    {
+      name: "Guardian Gate",
+      description:
+        "An intelligent scouting and intelligence platform. Real-time data, sharp insights, built for those who need to stay ahead.",
+      link: "https://scoutintelbyblxndside.up.railway.app/",
+      image: "/new_img4.png",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+  return (
+    <main className="min-h-screen bg-black text-white font-sans">
+      {/* NAV */}
+      <nav className="flex items-center justify-between px-8 py-5 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <Image src="/new_img1.jpg" alt="Blindsided Development Logo" width={40} height={40} className="rounded-full object-cover" />
+          <span className="text-lg font-bold tracking-tight">Blindsided Development</span>
+        </div>
+        <div className="hidden md:flex gap-8 text-sm text-white/60">
+          <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+          <a href="#services" className="hover:text-white transition-colors">Services</a>
+          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="relative flex flex-col items-center justify-center text-center px-6 py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-violet-950/30 via-black to-black pointer-events-none" />
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <p className="text-violet-400 text-sm font-semibold tracking-widest uppercase mb-4">AI Systems · Web & App Design · Tech Solutions</p>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+            We Build What&apos;s<br />
+            <span className="text-violet-400">Next.</span>
+          </h1>
+          <p className="text-white/60 text-lg md:text-xl max-w-xl mx-auto mb-10">
+            Blindsided Development crafts intelligent systems, sleek web experiences, and custom tech solutions for businesses ready to move fast.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#contact"
+              className="bg-violet-600 hover:bg-violet-500 text-white font-semibold px-8 py-3 rounded-full transition-colors"
+            >
+              Work With Us
+            </a>
+            <a
+              href="#projects"
+              className="border border-white/20 hover:border-white/50 text-white/80 hover:text-white font-semibold px-8 py-3 rounded-full transition-colors"
+            >
+              See Our Work
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="px-6 py-24 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold mb-2 text-center">What We Do</h2>
+        <p className="text-white/50 text-center mb-14">End-to-end solutions from idea to deployment.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              icon: "🤖",
+              title: "AI Systems & Agents",
+              desc: "Custom AI agents, automation pipelines, and intelligent workflows that save time and scale your business.",
+            },
+            {
+              icon: "🌐",
+              title: "Web & App Design",
+              desc: "Fast, modern, and conversion-focused websites and apps built with the latest frameworks.",
+            },
+            {
+              icon: "🖥️",
+              title: "Computer Upgrades",
+              desc: "Hardware assessments, upgrades, and optimization for outdated machines — get more out of what you have.",
+            },
+          ].map((s) => (
+            <div key={s.title} className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-violet-500/50 transition-colors">
+              <div className="text-4xl mb-4">{s.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{s.title}</h3>
+              <p className="text-white/50 text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED PROJECTS */}
+      <section id="projects" className="px-6 py-24 bg-white/[0.02] border-y border-white/10">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-2 text-center">Featured Projects</h2>
+          <p className="text-white/50 text-center mb-14">A few things we&apos;ve shipped.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {projects.map((p) => (
+              <Link
+                key={p.name}
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-violet-500/60 transition-all hover:-translate-y-1"
+              >
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-violet-400 transition-colors">{p.name}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed">{p.description}</p>
+                  <span className="inline-block mt-4 text-violet-400 text-sm font-medium">View Project →</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="px-6 py-24 max-w-3xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-4">Let&apos;s Build Something</h2>
+        <p className="text-white/50 mb-10">
+          Got a project in mind? Reach out and let&apos;s talk about what we can build together.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:blindsidesolutions.dev@gmail.com"
+            className="bg-violet-600 hover:bg-violet-500 text-white font-semibold px-8 py-3 rounded-full transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            Email Us
           </a>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://instagram.com/blindside_dev"
             target="_blank"
             rel="noopener noreferrer"
+            className="border border-white/20 hover:border-white/50 text-white/80 hover:text-white font-semibold px-8 py-3 rounded-full transition-colors"
           >
-            Read our docs
+            @blindside_dev
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <div className="text-white/30 text-sm space-y-1">
+          <p>blindsidesolutions.dev@gmail.com</p>
+          <p>(334) 336-2178</p>
+          <p>Venmo: @blindsidedev</p>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 px-8 py-6 flex flex-col sm:flex-row items-center justify-between text-white/30 text-sm">
+        <span>© 2026 Blindsided Development. All rights reserved.</span>
+        <span className="mt-2 sm:mt-0">Built with 🖤 by Blindsided Dev</span>
       </footer>
-    </div>
+    </main>
   );
 }
